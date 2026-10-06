@@ -1,3 +1,3 @@
 # zushicat.github.com
 
-This page intentionally left blank.
+Go to [https://zushicat.github.io/](https://zushicat.github.io/) to open the webpage.
