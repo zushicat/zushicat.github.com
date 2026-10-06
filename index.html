@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<!-- ============================================================
+  Karin Hoehne — portfolio · zushicat.github.io
+  Built on the "Paper Circuit" design language v2.0.0 (frozen).
+  Tokens: css/tokens.css (deploy copy of design/tokens.css).
+  M2: full content in place. Layout lands in M4, portrait M3,
+  traces/motion M5 (see plans/initial/plan-initial.md §6).
+============================================================ -->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Karin Hoehne — Software Developer &amp; AI Engineer</title>
+  <script>document.documentElement.classList.add('js');</script>
+  <meta name="description"
+    content="Product designer turned software architect and AI engineer, with 25+ years of experience across design, software, data, and information.">
+  <meta name="author" content="Karin Hoehne">
+
+  <!-- social -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Karin Hoehne — Software Developer &amp; AI Engineer">
+  <meta property="og:description"
+    content="Product designer turned software architect and AI engineer, with 25+ years of experience across design, software, data, and information.">
+  <meta property="og:url" content="https://zushicat.github.io/">
+
+  <!-- favicon: one ink solder-dot on cream -->
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F2EDE2'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%231F1D1A'/%3E%3C/svg%3E">
+
+  <!-- fonts: self-hosted, preloaded — no CDN (design-language §3) -->
+  <link rel="preload" href="./fonts/IBMPlexSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./fonts/IBMPlexSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./fonts/IBMPlexSans-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./fonts/IBMPlexSans-Bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./fonts/IBMPlexMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./fonts/IBMPlexMono-Medium.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="./css/tokens.css">
+  <link rel="stylesheet" href="./css/main.css">
+
+  <script src="./assets/portrait-grid.js" defer></script>
+  <script src="./js/portrait.js" defer></script>
+  <script src="./js/main.js" defer></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="wrap">
+
+    <!-- ==================================================
+         MASTHEAD — G3 giant type · G2/G1 portrait · focal zone
+         ================================================== -->
+    <header class="masthead">
+      <p class="overline">Portfolio · Cologne, Germany</p>
+
+      <h1 class="giant-name">Karin Hoehne</h1>
+
+      <!-- Portrait: halftone dot-field (M3). The 3 red terminal dots
+           painted by portrait.js are the trace sources (G2 as play). -->
+      <figure class="portrait" id="portrait" role="img" aria-label="Halftone portrait of Karin Hoehne">
+        <canvas id="portrait-canvas" aria-hidden="true"></canvas>
+        <noscript>
+          <img class="portrait-fallback" src="./assets/portrait-fallback.svg" alt="" width="480" height="640">
+        </noscript>
+        <figcaption class="mono portrait-caption">Fig. 01 · The source</figcaption>
+      </figure>
+
+      <p class="role-chip mono">Software Developer · AI Engineering</p>
+
+      <p class="dek">Product designer turned software architect and AI engineer, with 25+ years of experience across
+        design, software, data, and information.</p>
+
+      <nav class="masthead-links" aria-label="Primary">
+        <a class="masthead-link mono" href="https://github.com/zushicat?tab=repositories" target="_blank"
+          rel="noopener noreferrer">GitHub Repos →</a>
+        <a class="masthead-link mono" href="https://www.linkedin.com/in/karinhoehne/" target="_blank"
+          rel="noopener noreferrer">LinkedIn →</a>
+        <a class="masthead-link mono" href="#trajectory">The trajectory ↓</a>
+      </nav>
+
+      <span class="rot-tag mono" aria-hidden="true">Design → Digital humanities → Data → AI · 1996 → now</span>
+
+      <!-- M5: G1 circuit traces — orthogonal, elbow r 12, solder dots r 4 —
+           run from the portrait's red terminals to the role chip, the dek,
+           and the repositories links (masthead-internal; never across text) -->
+    </header>
+
+    <main id="main">
+      <!-- ==================================================
+           01 · PROFILE
+           ================================================== -->
+      <section class="section" id="profile" aria-labelledby="profile-title">
+        <p class="overline">01 · Profile</p>
+        <h2 id="profile-title">Design thinking, engineering discipline</h2>
+
+        <dl class="profile-meta mono">
+          <div class="meta-item">
+            <dt>Location</dt>
+            <dd>Cologne, Germany</dd>
+          </div>
+          <div class="meta-item">
+            <dt>Experience</dt>
+            <dd>25+ years</dd>
+          </div>
+          <div class="meta-item">
+            <dt>Current</dt>
+            <dd>Science Media Center Germany</dd>
+          </div>
+          <div class="meta-item">
+            <dt>GitHub</dt>
+            <dd><a href="https://github.com/zushicat?tab=repositories" target="_blank"
+                rel="noopener noreferrer">zushicat</a></dd>
+          </div>
+        </dl>
+
+        <div class="prose">
+          <p>My background combines design thinking with software engineering, covering software development, data
+            engineering, semantic technologies, knowledge graphs, AI and machine learning.</p>
+          <p>I work on complex technical problems where different disciplines need to come together: software
+            architecture, data and knowledge modelling, AI/ML, information architecture and user-facing applications. My
+            goal in this work has always been to make complex information and capabilities easier to understand, use and
+            work with.</p>
+        </div>
+      </section>
+
+      <!-- ==================================================
+           02 · FOCUS — numbered grid, first item is primary
+           ================================================== -->
+      <section class="section" id="focus" aria-labelledby="focus-title">
+        <p class="overline">02 · Focus</p>
+        <h2 id="focus-title">Current areas of focus</h2>
+
+        <ol class="focus-list">
+          <li class="focus-item is-primary"><span class="focus-num mono">01</span><span class="focus-text">Generative AI
+              and LLM-based systems, including RAG, AI agents, prompt and workflow design</span></li>
+          <li class="focus-item"><span class="focus-num mono">02</span><span class="focus-text">Knowledge engineering,
+              semantic technologies and knowledge graphs</span></li>
+          <li class="focus-item"><span class="focus-num mono">03</span><span class="focus-text">Search and retrieval
+              across structured and unstructured data</span></li>
+          <li class="focus-item"><span class="focus-num mono">04</span><span class="focus-text">Database systems and
+              data architecture</span></li>
+          <li class="focus-item"><span class="focus-num mono">05</span><span class="focus-text">Software architecture
+              for complex applications</span></li>
+          <li class="focus-item"><span class="focus-num mono">06</span><span class="focus-text">AI-powered tools and
+              interfaces</span></li>
+          <li class="focus-item"><span class="focus-num mono">07</span><span class="focus-text">Product design, UI/UX
+              and information architecture</span></li>
+        </ol>
+      </section>
+
+      <!-- ==================================================
+           03 · TRAJECTORY — G5 banded registers: ink bars as era
+           stages, entries standing on them, dashed arrows between
+           tiers (M4/M5 render the bars + arrows; current era is
+           the one saturated focal zone of the lower page)
+           ================================================== -->
+      <section class="section" id="trajectory" aria-labelledby="trajectory-title">
+        <p class="overline">03 · Trajectory</p>
+        <h2 id="trajectory-title">From design to AI engineering</h2>
+        <p class="section-dek">Twenty-five years, four disciplines, one thread: making complex information usable.</p>
+
+        <ol class="eras">
+
+          <!-- era 1 · design -->
+          <li class="era" id="era-design">
+            <header class="era-head">
+              <span class="era-num mono">01</span>
+              <span class="era-years mono">1996–2004</span>
+              <h3 class="era-name">Design</h3>
+              <p class="era-summary">Where the eye was trained: identity, exhibit and interaction design — print, stage
+                and early web.</p>
+            </header>
+            <ul class="era-roles">
+              <li class="role">
+                <div class="role-head">
+                  <h4 class="role-title">Computer Game Designer</h4>
+                  <span class="role-org">calculus Softwareengineering · Freelance</span>
+                  <span class="role-where mono">Cologne · 1996–1998</span>
+                </div>
+                <p class="role-summary">Game design and development at a small Cologne studio.</p>
+              </li>
+              <li class="role">
+                <div class="role-head">
+                  <h4 class="role-title">Designer</h4>
+                  <span class="role-org">Freelance</span>
+                  <span class="role-where mono">Cologne/Bonn · 1998–2004</span>
+                </div>
+                <p class="role-summary">Comprehensive design services across print and digital media.</p>
+                <ul class="role-points">
+                  <li>Corporate identities and large-scale event conceptualization</li>
+                  <li>3D modeling, visualization and exhibit design</li>
+                  <li>Multimedia applications, video editing and early web development</li>
+                </ul>
+              </li>
+            </ul>
+            <p class="era-note mono">Origins 1995 — industrial design at U. Wuppertal · exhibit-design internship at
+              Tetrad Design, Annapolis, MD.</p>
+          </li>
+
+          <!-- era 2 · digital humanities -->
+          <li class="era" id="era-dh">
+            <header class="era-head">
+              <span class="era-num mono">02</span>
+              <span class="era-years mono">2007–2013</span>
+              <h3 class="era-name">Digital Humanities</h3>
+              <p class="era-summary">Research software where semantics meets code: archives, ontologies and digital
+                libraries.</p>
+            </header>
+            <ul class="era-roles">
+              <li class="role">
+                <div class="role-head">
+                  <h4 class="role-title">Research Associate</h4>
+                  <span class="role-org">U. Cologne · Institute of Digital Humanities (HKI) · Full-time</span>
+                  <span class="role-where mono">Cologne · 2007–2009</span>
+                </div>
+                <p class="role-summary">Digital-library infrastructure for manuscript and copyright-history collections
+                  — ENRICH and “Primary Sources on Copyright History”.</p>
+                <ul class="role-points">
+                  <li>Browser-based content management for contributing authors; backend XML database implementation
+                  </li>
+                  <li>Schema conversion to Dublin Core and TEI P5 via XSLT; OAI-PMH interfaces</li>
+                  <li>Frontend concept and design</li>
+                </ul>
+              </li>
+              <li class="role">
+                <div class="role-head">
+                  <h4 class="role-title">Lecturer</h4>
+                  <span class="role-org">U. Cologne · Part-time</span>
+                  <span class="role-where mono">Cologne · 2007–2010</span>
+                </div>
+                <p class="role-summary">Practical exercises in C++; introductory programming courses in Processing/Java;
+                  faculty tutorials.</p>
+              </li>
+              <li class="role">
+                <div class="role-head">
+                  <h4 class="role-title">Research Associate</h4>
+                  <span class="role-org">U. Cologne · CoDArchLab, Institute of Archaeology · Full-time</span>
+                  <span class="role-where mono">Cologne · 2009–2011</span>
+                </div>
+                <p class="role-summary">Core development on the Arachne archaeological database, incl. the Hellespont
+                  project integrating Arachne and Perseus.</p>
+                <ul class="role-points">
+                  <li>LAMP-based core system contributions</li>
+                  <li>Standard schemas and ontologies — Dublin Core, CIDOC CRM, METS/MODS — for data transfer and
+                    aggregation</li>
+                  <li>Prototyped applications on those interfaces</li>
+                </ul>
+              </li>
+              <li class="role">
+                <div class="role-head">
+                  <h4 class="role-title">Software Developer</h4>
+                  <span class="role-org">Cambridge Faculty of Law · Freelance</span>
+                  <span class="role-where mono">Cambridge, UK · 2011–2013</span>
+                </div>
+                <p class="role-summary">Rebuilt the digital archive “Primary Sources on Copyright History (1450–1900)” —
+                  <a href="#work">see Selected work</a>.
+                </p>
+              </li>
+            </ul>
+          </li>
+
+          <!-- era 3 · data engineering -->
+          <li class="era" id="era-data">
+            <header class="era-head">
+              <span class="era-num mono">03</span>
+              <span class="era-years mono">2012–2019</span>
+              <h3 class="era-name">Data Engineering</h3>
+              <p class="era-summary">Production data work at scale: pipelines, knowledge graphs and interfaces people
+                could actually use.</p>
+            </header>
+            <ul class="era-roles">
+              <li class="role">
+                <div class="role-head">
+                  <h4 class="role-title">Software Developer</h4>
+                  <span class="role-org">HRG · Freelance</span>
+                  <span class="role-where mono">Cologne · 2012–2015</span>
+                </div>
+                <p class="role-summary">REST interfaces for bidirectional data transfer between travel booking systems,
+                  plus import-validation monitoring with a browser-based interface.</p>
+              </li>
+              <li class="role">
+                <div class="role-head">
+                  <h4 class="role-title">Software Developer</h4>
+                  <span class="role-org">Heimkomfort · Freelance</span>
+                  <span class="role-where mono">Cologne · 2013–2015</span>
+                </div>
+                <p class="role-summary">Complete retail infrastructure for an online commerce business on Magento —
+                  owned end to end, platform to DevOps.</p>
+                <ul class="role-points">
+                  <li>Self-managed open-source web stack, from setup through production operation</li>
+                  <li>Custom platform modules and browser-based back-office tools</li>
+                  <li>Database administration, DevOps and continuous maintenance</li>
+                </ul>
+              </li>
+              <li class="role">
+                <div class="role-head">
+                  <h4 class="role-title">Software Engineering | Data Engineering</h4>
+                  <span class="role-org">fedger.io · Full-time</span>
+                  <span class="role-where mono">Cologne · 2016–2019</span>
+                </div>
+                <p class="role-summary">Data-driven products for the hospitality industry.</p>
+                <ul class="role-points">
+                  <li>End-to-end ETL/ELT pipelines across relational and non-relational stores</li>
+                  <li>Multilingual knowledge graph integrating public linked data with proprietary industry data</li>
+                  <li>NLP/ML extracting structure from domain-specific text; data fusion across text, images,
+                    point-of-sale, geolocation and social media</li>
+                  <li>Interactive web visualizations for non-technical stakeholders</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <!-- era 4 · AI engineering — the focal era -->
+          <li class="era is-current" id="era-ai">
+            <header class="era-head">
+              <span class="era-num mono">04</span>
+              <span class="era-years mono">2021–Now</span>
+              <h3 class="era-name">AI Engineering</h3>
+              <p class="era-summary">The current chapter: AI engineering for science communication.</p>
+            </header>
+            <ul class="era-roles">
+              <li class="role">
+                <div class="role-head">
+                  <h4 class="role-title">Software Developer | AI Engineering</h4>
+                  <span class="role-org">Science Media Center Germany · Full-time</span>
+                  <span class="role-where mono">Cologne · Jan 2021 – present</span>
+                </div>
+                <div class="role-projects">
+                  <div class="role-project">
+                    <h5 class="project-name">Augmented Science Journalism <span
+                        class="mono project-years">2021–2023</span></h5>
+                    <p class="role-summary">Knowledge-graph and AI solutions for editorial content analysis and
+                      processing; backend infrastructure, data platforms and APIs.</p>
+                    <ul class="role-points">
+                      <li>Knowledge graphs grounded in semantic-web standards, integrating editorial content with public
+                        linked-data repositories and ontologies</li>
+                      <li>LLM infrastructure operated end to end — self-hosted model serving, orchestration, low-code
+                        workflow automation</li>
+                      <li>Prompt engineering and RAG; type-safe, schema-first APIs; polyglot stores (relational,
+                        GraphQL, vector)</li>
+                    </ul>
+                  </div>
+                  <div class="role-project">
+                    <h5 class="project-name">Bridging the Communication Gap <span
+                        class="mono project-years">2024–present</span></h5>
+                    <p class="role-summary">AI-supported science communication with the Faculty of Environment and
+                      Natural Resources, U. Freiburg — forestry, environmental and sustainability sciences.</p>
+                    <ul class="role-points">
+                      <li>Heterogeneous data pipelines — bibliographic records, media, web and full text — with semantic
+                        chunking and LLM-assisted classification and retrieval</li>
+                      <li>Hybrid semantic search on vector-database infrastructure: embeddings, lexical scoring and
+                        neural reranking</li>
+                      <li>Multi-agent architectures and MCP tool servers; RAG enrichment services; REST APIs with SSE
+                        streaming</li>
+                      <li>TypeScript/React frontends for conversational AI, faceted search and monitoring; LLM gateway
+                        across self-hosted and commercial models</li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </li>
+
+        </ol>
+      </section>
+
+      <!-- ==================================================
+           04 · SELECTED WORK — spec-sheet entries, hairline rules
+           ================================================== -->
+      <section class="section" id="work" aria-labelledby="work-title">
+        <p class="overline">04 · Selected work</p>
+        <h2 id="work-title">Selected work</h2>
+        <p class="section-dek">Three projects that show the thread: structure the information, then make it usable.</p>
+
+        <article class="project">
+          <header class="project-head">
+            <h3 class="project-title">Bridging the Communication Gap</h3>
+            <span class="project-meta mono">2024–present · Science Media Center Germany × U. Freiburg</span>
+          </header>
+          <p class="project-summary">AI-supported science communication with the Faculty of Environment and Natural
+            Resources (University of Freiburg), serving forestry, environmental and sustainability sciences.</p>
+          <ul class="project-points">
+            <li>Hybrid semantic search over vector-database infrastructure — embeddings, lexical scoring and neural
+              reranking across data sources</li>
+            <li>LLM-powered enrichment following RAG methodology; multi-agent architectures with tool servers on the
+              Model Context Protocol</li>
+            <li>TypeScript/React frontends for conversational AI, faceted search and monitoring, on token-authenticated
+              REST APIs with SSE streaming</li>
+          </ul>
+          <p class="project-link mono"><a href="https://suite.bricomgap.uni-freiburg.de/" target="_blank"
+              rel="noopener noreferrer">suite.bricomgap.uni-freiburg.de →</a></p>
+        </article>
+
+        <article class="project">
+          <header class="project-head">
+            <h3 class="project-title">Augmented Science Journalism</h3>
+            <span class="project-meta mono">2021–2023 · Science Media Center Germany</span>
+          </header>
+          <p class="project-summary">Knowledge-graph and AI solutions for editorial content analysis and processing —
+            backend infrastructure, data platforms and APIs.</p>
+          <ul class="project-points">
+            <li>Knowledge graphs grounded in semantic-web standards, integrating editorial content with public
+              linked-data repositories and ontologies</li>
+            <li>LLM infrastructure operated end to end, from self-hosted model serving to orchestration and low-code
+              workflow automation</li>
+            <li>Polyglot data infrastructure — relational databases, GraphQL interfaces and vector stores — for hybrid
+              search over structured and unstructured content</li>
+          </ul>
+        </article>
+
+        <article class="project">
+          <header class="project-head">
+            <h3 class="project-title">Primary Sources on Copyright History, 1450–1900</h3>
+            <span class="project-meta mono">2007–2009 · 2011–2013 · U. Cologne × Cambridge Faculty of Law</span>
+          </header>
+          <p class="project-summary">Digital archive of historical copyright documents — conceptualized in Cologne,
+            rebuilt in Cambridge six years later. The archive is still online.</p>
+          <ul class="project-points">
+            <li>Rebuilt system architecture on CouchDB and RESTful principles, with an XML→JSON migration pipeline for
+              legacy data</li>
+            <li>Full-text search with Apache SOLR; OAI-PMH metadata interface on Dublin Core standards</li>
+            <li>Browser-based CMS for research contributors; integrated external sources (Wikipedia, Google Books); URL
+              persistence and permalinks</li>
+          </ul>
+          <p class="project-link mono"><a href="https://www.copyrighthistory.org/" target="_blank"
+              rel="noopener noreferrer">copyrighthistory.org →</a></p>
+        </article>
+      </section>
+
+      <!-- ==================================================
+           05 · TOOLBOX — mono chips, pill radius, no color coding
+           ================================================== -->
+      <section class="section" id="toolbox" aria-labelledby="toolbox-title">
+        <p class="overline">05 · Toolbox</p>
+        <h2 id="toolbox-title">What I build with</h2>
+
+        <div class="toolbox-group">
+          <h3 class="group-label mono">AI &amp; Semantics</h3>
+          <ul class="chips">
+            <li>RAG</li>
+            <li>LLM infrastructure</li>
+            <li>AI agents</li>
+            <li>MCP</li>
+            <li>Prompt &amp; workflow design</li>
+            <li>Knowledge graphs</li>
+            <li>Semantic web</li>
+            <li>Ontologies</li>
+            <li>NLP</li>
+            <li>Hybrid search</li>
+          </ul>
+        </div>
+        <div class="toolbox-group">
+          <h3 class="group-label mono">Data &amp; Backend</h3>
+          <ul class="chips">
+            <li>REST APIs</li>
+            <li>GraphQL</li>
+            <li>Vector databases</li>
+            <li>ETL/ELT</li>
+            <li>CouchDB</li>
+            <li>Apache SOLR</li>
+            <li>XML · XSLT</li>
+            <li>OAI-PMH</li>
+            <li>Dublin Core</li>
+            <li>CIDOC CRM</li>
+            <li>TEI P5</li>
+            <li>Containers · CI/CD</li>
+          </ul>
+        </div>
+        <div class="toolbox-group">
+          <h3 class="group-label mono">Frontend &amp; Design</h3>
+          <ul class="chips">
+            <li>TypeScript</li>
+            <li>React</li>
+            <li>JavaScript</li>
+            <li>PHP · LAMP</li>
+            <li>Magento</li>
+            <li>UI/UX</li>
+            <li>Information architecture</li>
+            <li>Corporate identity</li>
+            <li>Exhibit design</li>
+          </ul>
+        </div>
+        <p class="section-note mono">Skills as named in the work above — nothing aspirational.</p>
+      </section>
+
+    </main>
+
+    <!-- ==================================================
+         FOOTER — 4px ink rule · repositories CTA · colophon
+         ================================================== -->
+    <footer class="footer" id="colophon">
+      <p class="overline">Colophon</p>
+      <!-- <h2 class="footer-title">Find me</h2> -->
+      <p class="footer-cta"><a class="footer-repo-link" href="https://github.com/zushicat?tab=repositories"
+          target="_blank" rel="noopener noreferrer">GitHub Repos →</a></p>
+      <p class="footer-cta"><a class="footer-repo-link" href="https://www.linkedin.com/in/karinhoehne/" target="_blank"
+          rel="noopener noreferrer">LinkedIn →</a></p>
+
+      <p class="footer-secondary mono"><a href="https://github.com/zushicat/simple-explainer/tree/main/design"
+          target="_blank" rel="noopener noreferrer">Design Language Definition on GitHub →</a></p>
+
+      <p class="footer-note"><br><br><br><br></p>
+
+    </footer>
+
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+/* Simple Explainer — design tokens v2
+ *
+ * Status: v2.0.0 FROZEN 2026-10-03 (specimen "Paper Circuit").
+ * Contrast audit: body pairs ≥7:1, large text/graphics ≥3:1 — per-pair notes
+ * in design-language.md §2. This is the ONLY token file. Skills that need the
+ * look embed a compact digest of it — no copies, no sync tooling.
+ *
+ * DEPLOY COPY: verbatim copy of design/tokens.css (the master) in this
+ * workspace. Update the master, then re-copy — never edit values here.
+ */
+
+:root {
+  /* ---- color: grounds ---- */
+  --se-color-paper: #F2EDE2;        /* cream — default ground */
+  --se-color-plate: #E2DFD9;        /* warm gray — the "plate" voice (IBM 1401 lesson) */
+  --se-color-paper-alt: #FFFFFF;    /* dense "sheet" layouts only */
+
+  /* ---- color: ink & grayscale register ---- */
+  --se-color-ink: #1F1D1A;          /* body text, primary strokes — 14.4 on cream AAA */
+  --se-color-muted-ink: #6E6A63;    /* captions/labels ≥12px only, never body — 4.6 AA */
+  --se-register-strong: #4A463F;    /* secondary strokes; usable as small text — 8.0 on cream */
+  --se-register-mid: #8A8478;       /* graphics / large text only — 3.2 on cream */
+  --se-register-faint: #B5AFA2;     /* fills & overlap layers only — 1.9 on cream */
+  --se-color-grid-line: #DCD5C6;    /* hairline grids, dividers on cream */
+
+  /* ---- color: accents — blue anchors, red pops, mustard/teal code ---- */
+  --se-accent-blue: #1E4FA8;        /* anchor: 6.6 cream / 5.8 plate / 7.7 white — AA text anywhere; white text on fill 7.7 AAA */
+  --se-accent-red: #D93A2B;         /* pop: 3.9 cream — large text (≥24px bold), strokes, fills only; white text on fill 4.6 AA */
+  --se-accent-mustard: #E8A13A;     /* FILL-ONLY on light grounds; ink text on fill 7.7 AAA */
+  --se-accent-teal: #2E9EA6;        /* FILL-ONLY on cream (2.7); ink text on fill 5.3 AA */
+  /* categorical rotation: blue → red → mustard → teal */
+
+  /* ---- typography ---- */
+  --se-font-sans: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --se-font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --se-type-1: 12px;   /* mono captions, axis labels */
+  --se-type-2: 14px;   /* captions, mono data */
+  --se-type-3: 16px;   /* body */
+  --se-type-4: 20px;   /* subheading */
+  --se-type-5: 24px;   /* heading */
+  --se-type-6: 32px;   /* display M */
+  --se-type-7: 48px;   /* display L */
+  --se-type-8: 72px;   /* display XL */
+  --se-type-9: 96px;   /* giant display */
+  --se-type-10: 120px; /* giant display, cropped/bleeding numerals */
+  --se-leading-display: 1.05;
+  --se-leading-body: 1.5;
+  --se-label-tracking: 0.08em;
+
+  /* ---- spacing ---- */
+  --se-space-1: 4px;
+  --se-space-2: 8px;
+  --se-space-3: 12px;
+  --se-space-4: 16px;
+  --se-space-5: 24px;
+  --se-space-6: 32px;
+  --se-space-7: 48px;
+  --se-space-8: 64px;
+  --se-space-9: 96px;
+
+  /* ---- line & form ---- */
+  --se-stroke-hairline: 1.5px;      /* structure, dividers, leaders, grids */
+  --se-stroke-primary: 2.5px;       /* containers, traces, node outlines */
+  --se-stroke-emphasis: 4px;        /* hero flow line — sparingly */
+  --se-dash-secondary: 6 4;         /* secondary flow, projection */
+  --se-dash-context: 2 4;           /* context, boundaries */
+  --se-dot-radius: 4px;             /* solder-dot junctions, node centers */
+  --se-elbow-radius: 12px;          /* rounded 90° elbows — circuit traces only */
+  --se-radius-sharp: 0;             /* default corners */
+  --se-radius-pill: 999px;          /* badges/chips only */
+
+  /* ---- texture: opt-in per composition, caps ---- */
+  --se-texture-grain-opacity: 0.06; /* max grain overlay opacity */
+  --se-texture-hatch: 45deg;        /* hatch angle — color-code use only */
+
+  /* ---- motion: web reveals only; video deferred ---- */
+  --se-ease-entrance: cubic-bezier(0.16, 1, 0.3, 1);
+  --se-ease-standard: cubic-bezier(0.33, 1, 0.68, 1);
+  --se-duration-micro: 200ms;
+  --se-duration-standard: 400ms;
+  --se-stagger: 100ms;
+}

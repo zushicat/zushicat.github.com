@@ -1,0 +1,850 @@
+/* ============================================================
+   Karin Hoehne — portfolio · main stylesheet
+   Consumes css/tokens.css v2.0.0 only — no raw hexes outside it
+   (the two URL-encoded SVG strokes carry token values by design).
+   M4: layout + sections. Motion reveals land in M5.
+   ============================================================ */
+
+/* ---- self-hosted fonts (design-language §3 — no CDN) ---- */
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("../fonts/IBMPlexSans-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("../fonts/IBMPlexSans-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("../fonts/IBMPlexSans-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("../fonts/IBMPlexSans-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("../fonts/IBMPlexMono-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("../fonts/IBMPlexMono-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---- base ---- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  background: var(--se-color-paper);
+  color: var(--se-color-ink);
+  font-family: var(--se-font-sans);
+  font-size: var(--se-type-3);
+  line-height: var(--se-leading-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--se-accent-blue);
+  color: var(--se-color-paper);
+}
+
+:focus-visible {
+  outline: 2.5px solid var(--se-accent-blue);
+  outline-offset: 2px;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  color: var(--se-accent-blue);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+}
+
+.mono {
+  font-family: var(--se-font-mono);
+}
+
+.wrap {
+  max-width: 1104px;
+  margin: 0 auto;
+  padding: 0 var(--se-space-5);
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 10;
+  background: var(--se-color-paper-alt);
+  color: var(--se-color-ink);
+  font-family: var(--se-font-mono);
+  font-size: var(--se-type-2);
+  padding: var(--se-space-2) var(--se-space-4);
+}
+
+.skip-link:focus {
+  left: var(--se-space-2);
+  top: var(--se-space-2);
+}
+
+/* ---- shared primitives ---- */
+.overline {
+  font-family: var(--se-font-mono);
+  font-size: var(--se-type-1);
+  font-weight: 500;
+  letter-spacing: var(--se-label-tracking);
+  text-transform: uppercase;
+  color: var(--se-color-muted-ink);
+}
+
+.section {
+  padding: var(--se-space-8) 0 var(--se-space-7);
+  border-top: var(--se-stroke-hairline) solid var(--se-color-grid-line);
+}
+
+.section .overline {
+  display: block;
+  margin-bottom: var(--se-space-3);
+}
+
+.section h2 {
+  font-size: var(--se-type-5);
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: var(--se-space-4);
+}
+
+.section-dek {
+  font-size: var(--se-type-2);
+  color: var(--se-register-strong);
+  max-width: 640px;
+  margin-bottom: var(--se-space-6);
+}
+
+.section-note {
+  font-family: var(--se-font-mono);
+  font-size: var(--se-type-1);
+  color: var(--se-color-muted-ink);
+  margin-top: var(--se-space-5);
+}
+
+/* tick-marker lists (roles, projects) — drawing-office ticks, not bullets */
+.role-points,
+.project-points {
+  margin-top: var(--se-space-3);
+  display: grid;
+  gap: var(--se-space-2);
+  max-width: 720px;
+}
+
+.role-points li,
+.project-points li {
+  font-size: var(--se-type-2);
+  color: var(--se-register-strong);
+  padding-left: 20px;
+  position: relative;
+}
+
+.role-points li::before,
+.project-points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 12px;
+  border-top: var(--se-stroke-hairline) solid var(--se-register-strong);
+}
+
+/* ============================================================
+   MASTHEAD — G3 giant type · portrait focal zone
+   ============================================================ */
+.masthead {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  grid-template-rows: auto 1fr auto auto auto;
+  grid-template-areas:
+    "ov py"
+    "nm py"
+    "ch py"
+    "dk py"
+    "lk py";
+  column-gap: var(--se-space-8);
+  padding: var(--se-space-9) 0 var(--se-space-8);
+}
+
+.masthead .overline {
+  grid-area: ov;
+}
+
+.giant-name {
+  grid-area: nm;
+  align-self: end;
+  font-size: var(--se-type-9);
+  font-weight: 700;
+  line-height: var(--se-leading-display);
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  margin-left: -0.05em;
+  /* optical alignment of the K against the gutter */
+}
+
+.role-chip {
+  grid-area: ch;
+  align-self: start;
+  justify-self: start;
+  margin-top: var(--se-space-5);
+  font-family: var(--se-font-mono);
+  font-size: var(--se-type-1);
+  font-weight: 500;
+  letter-spacing: var(--se-label-tracking);
+  text-transform: uppercase;
+  background: var(--se-accent-blue);
+  color: var(--se-color-paper);
+  /* 7.7 AAA on fill */
+  border-radius: var(--se-radius-pill);
+  padding: var(--se-space-2) var(--se-space-4);
+}
+
+.dek {
+  grid-area: dk;
+  margin-top: var(--se-space-4);
+  font-size: var(--se-type-4);
+  line-height: 1.4;
+  color: var(--se-register-strong);
+  max-width: 560px;
+}
+
+.masthead-links {
+  grid-area: lk;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--se-space-3) var(--se-space-5);
+  margin-top: var(--se-space-5);
+}
+
+.masthead-link {
+  font-family: var(--se-font-mono);
+  font-size: var(--se-type-1);
+  font-weight: 500;
+  letter-spacing: var(--se-label-tracking);
+  text-transform: uppercase;
+}
+
+.portrait {
+  grid-area: py;
+  margin: 0;
+}
+
+.portrait canvas,
+.portrait .portrait-fallback {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+html:not(.js) .portrait canvas {
+  display: none;
+}
+
+/* no-JS: the noscript fallback carries the portrait */
+.portrait-caption {
+  font-family: var(--se-font-mono);
+  font-size: var(--se-type-1);
+  color: var(--se-color-muted-ink);
+  margin-top: var(--se-space-2);
+}
+
+.rot-tag {
+  position: absolute;
+  right: calc(-1 * var(--se-space-6));
+  top: 62%;
+  /* sits in the outer page margin, clear of the portrait */
+  transform: rotate(90deg);
+  transform-origin: right center;
+  font-family: var(--se-font-mono);
+  font-size: var(--se-type-1);
+  letter-spacing: var(--se-label-tracking);
+  text-transform: uppercase;
+  color: var(--se-color-muted-ink);
+  white-space: nowrap;
+}
+
+/* ============================================================
+   01 · PROFILE
+   ============================================================ */
+.profile-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--se-space-4) var(--se-space-8);
+  padding: var(--se-space-4) 0;
+  margin-bottom: var(--se-space-6);
+  border-top: var(--se-stroke-primary) solid var(--se-color-ink);
+  border-bottom: var(--se-stroke-hairline) solid var(--se-color-grid-line);
+}
+
+.meta-item dt {
+  font-family: var(--se-font-mono);
+  font-size: var(--se-type-1);
+  font-weight: 500;
+  letter-spacing: var(--se-label-tracking);
+  text-transform: uppercase;
+  color: var(--se-color-muted-ink);
+}
+
+.meta-item dd {
+  font-family: var(--se-font-mono);
+  font-size: var(--se-type-2);
+  margin-top: var(--se-space-1);
+}
+
+.prose {
+  max-width: 720px;
+  display: grid;
+  gap: var(--se-space-4);
+}
+
+.prose a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+}
+
+/* ============================================================
+   02 · FOCUS — numbered grid; 01 is the primary (blue pill)
+   ============================================================ */
+.focus-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 var(--se-space-8);
+}
+
+.focus-item {
+  display: flex;
+  gap: var(--se-space-4);
+  align-items: baseline;
+  padding: var(--se-space-3) 0;
+  border-top: var(--se-stroke-hairline) solid var(--se-color-grid-line);
+}
+
+.focus-num {
+  flex: none;
+  min-width: 24px;
+  font-family: var(--se-font-mono);
+  font-size: var(--se-type-1);
+  font-weight: 500;
+  letter-spacing: var(--se-label-tracking);
+  color: var(--se-register-strong);
+}
+
+.focus-item.is-primary .focus-num {
+  background: var(--se-accent-blue);
+  color: var(--se-color-paper);
+  border-radius: var(--se-radius-pill);
+  padding: var(--se-space-1) var(--se-space-3);
+  margin-left: -12px;
+  /* pill optically aligns with the plain numbers */
+}
+
+.focus-item.is-primary .focus-text {
+  font-weight: 500;
+}
+
+.focus-text {
+  font-size: var(--se-type-3);
+}
+
+/* ============================================================
+   03 · TRAJECTORY — G5 banded registers: ink bars as stages,
+   entries standing on them, dashed open-head arrows step down
+   ============================================================ */
+.eras {
+  margin-top: var(--se-space-4);
+}
+
+.era {
+  padding: var(--se-space-6) 0 var(--se-space-5);
+  border-bottom: 8px solid var(--se-color-ink);
+  /* the stage bar */
+}
+
+.era:first-child {
+  padding-top: 0;
+}
+
+.era.is-current {
+  border-bottom-color: var(--se-accent-blue);
+}
+
+/* the one focal bar */
+
+.era:not(:last-child)::after {
+  /* dashed open-head arrow — steps down tier to tier (secondary marker) */
+  content: "";
+  display: block;
+  width: 24px;
+  height: 24px;
+  margin-top: var(--se-space-4);
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2v14M6 10l6 6 6-6" stroke="%234A463F" stroke-width="2" stroke-dasharray="6 4" stroke-linecap="round"/></svg>') no-repeat center / contain;
+}
+
+.era-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--se-space-1) var(--se-space-4);
+  margin-bottom: var(--se-space-4);
+}
+
+.era-num {
+  font-family: var(--se-font-mono);
+  font-size: var(--se-type-1);
+  font-weight: 500;
+  letter-spacing: var(--se-label-tracking);
+  text-transform: uppercase;
+  color: var(--se-register-strong);
+}
+
+.era-years {
+  font-family: var(--se-font-mono);
+  font-size: var(--se-type-2);
+  color: var(--se-color-ink);
+}
+
+.era.is-current .era-years {
+  /* playful gesture 2 of 2: the living chapter, tilted ≤ 2°, the anchor blue */
+  display: inline-block;
+  transform: rotate(-1.5deg);
+  background: var(--se-accent-blue);
+  color: var(--se-color-paper);
+  border-radius: var(--se-radius-pill);
+  font-size: var(--se-type-1);
+  font-weight: 500;
+  letter-spacing: var(--se-label-tracking);
+  text-transform: uppercase;
+  padding: var(--se-space-1) var(--se-space-3);
+}
+
+.era-name {
+  font-size: var(--se-type-4);
+  font-weight: 600;
+}
+
+.era-summary {
+  flex: 0 0 100%;
+  font-size: var(--se-type-2);
+  color: var(--se-register-strong);
+  max-width: 720px;
+}
+
+.era-roles {
+  max-width: 720px;
+}
+
+.role {
+  padding: var(--se-space-5) 0;
+}
+
+.role:first-child {
+  padding-top: var(--se-space-2);
+}
+
+.role+.role {
+  border-top: var(--se-stroke-hairline) solid var(--se-color-grid-line);
+}
+
+.role-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--se-space-1) var(--se-space-4);
+}
+
+.role-title {
+  font-size: var(--se-type-3);
+  font-weight: 600;
+}
+
+.role-org {
+  font-size: var(--se-type-2);
+  color: var(--se-register-strong);
+}
+
+.role-where {
+  margin-left: auto;
+  font-family: var(--se-font-mono);
+  font-size: var(--se-type-1);
+  color: var(--se-color-muted-ink);
+}
+
+.role-summary {
+  font-size: var(--se-type-3);
+  margin-top: var(--se-space-2);
+}
+
+.role-summary a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+}
+
+.era-note {
+  font-family: var(--se-font-mono);
+  font-size: var(--se-type-1);
+  color: var(--se-color-muted-ink);
+  margin-top: var(--se-space-4);
+  max-width: 720px;
+}
+
+.role-projects {
+  margin-top: var(--se-space-3);
+  display: grid;
+  gap: var(--se-space-4);
+}
+
+.role-project+.role-project {
+  border-top: var(--se-stroke-hairline) solid var(--se-color-grid-line);
+  padding-top: var(--se-space-4);
+}
+
+.project-name {
+  font-size: var(--se-type-3);
+  font-weight: 600;
+}
+
+.project-years {
+  font-size: var(--se-type-1);
+  font-weight: 400;
+  color: var(--se-color-muted-ink);
+  margin-left: var(--se-space-2);
+}
+
+.role-project .role-summary {
+  margin-top: var(--se-space-1);
+}
+
+/* ============================================================
+   04 · SELECTED WORK — spec-sheet entries
+   ============================================================ */
+.project {
+  padding: var(--se-space-6) 0;
+}
+
+.project:first-of-type {
+  border-top: var(--se-stroke-primary) solid var(--se-color-ink);
+}
+
+.project+.project {
+  border-top: var(--se-stroke-hairline) solid var(--se-color-grid-line);
+}
+
+.project-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--se-space-1) var(--se-space-4);
+  margin-bottom: var(--se-space-2);
+}
+
+.project-title {
+  font-size: var(--se-type-4);
+  font-weight: 600;
+}
+
+.project-meta {
+  margin-left: auto;
+  font-family: var(--se-font-mono);
+  font-size: var(--se-type-1);
+  color: var(--se-color-muted-ink);
+}
+
+.project-summary {
+  font-size: var(--se-type-3);
+  max-width: 720px;
+}
+
+.project-link {
+  font-family: var(--se-font-mono);
+  font-size: var(--se-type-1);
+  margin-top: var(--se-space-3);
+}
+
+/* ============================================================
+   05 · TOOLBOX — mono chips (the one legal pill use besides badges)
+   ============================================================ */
+.toolbox-group {
+  margin-top: var(--se-space-5);
+}
+
+.toolbox-group:first-of-type {
+  margin-top: 0;
+}
+
+.group-label {
+  font-family: var(--se-font-mono);
+  font-size: var(--se-type-1);
+  font-weight: 500;
+  letter-spacing: var(--se-label-tracking);
+  text-transform: uppercase;
+  color: var(--se-color-muted-ink);
+  margin-bottom: var(--se-space-3);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--se-space-2);
+}
+
+.chips li {
+  font-family: var(--se-font-mono);
+  font-size: var(--se-type-1);
+  font-weight: 500;
+  letter-spacing: var(--se-label-tracking);
+  text-transform: uppercase;
+  color: var(--se-color-ink);
+  border: var(--se-stroke-hairline) solid var(--se-register-mid);
+  border-radius: var(--se-radius-pill);
+  padding: var(--se-space-2) var(--se-space-3);
+}
+
+/* ============================================================
+   FOOTER — 4px emphasis rule · repositories CTA · colophon
+   ============================================================ */
+.footer {
+  border-top: var(--se-stroke-emphasis) solid var(--se-color-ink);
+  padding: var(--se-space-7) 0 var(--se-space-8);
+}
+
+.footer .overline {
+  display: block;
+  margin-bottom: var(--se-space-3);
+}
+
+.footer-title {
+  font-size: var(--se-type-5);
+  font-weight: 600;
+  margin-bottom: var(--se-space-4);
+}
+
+.footer-cta {
+  margin-bottom: var(--se-space-2);
+}
+
+.footer-repo-link {
+  font-size: var(--se-type-5);
+  font-weight: 600;
+}
+
+.footer-secondary {
+  font-family: var(--se-font-mono);
+  font-size: var(--se-type-1);
+  margin-bottom: var(--se-space-2);
+}
+
+.footer-secondary+.footer-secondary {
+  margin-bottom: var(--se-space-6);
+}
+
+/* the last one clears the colophon note */
+.footer-note {
+  font-size: var(--se-type-1);
+  color: var(--se-color-muted-ink);
+  max-width: 640px;
+}
+
+.footer-note .mono {
+  font-size: var(--se-type-1);
+}
+
+/* ============================================================
+   MOTION (M5) — entrance reveals + trace draw-in (§9: entrances
+   only, one beat at a time). The hidden state is gated on html.js
+   (set inline in <head>) so no-JS pages render complete and the
+   first paint is already correct. Transitions arm only AFTER the
+   hidden state is committed (html.reveal-armed), so marking never
+   animates 1 → 0.
+   ============================================================ */
+html.js .reveal {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+html.js.reveal-armed .reveal {
+  transition: opacity var(--se-duration-standard) var(--se-ease-entrance), transform var(--se-duration-standard) var(--se-ease-entrance);
+}
+
+html.js .reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.trace-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.trace {
+  fill: none;
+  stroke: var(--se-color-ink);
+  stroke-width: var(--se-stroke-primary);
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset var(--se-duration-standard) var(--se-ease-entrance);
+}
+
+.trace-overlay.is-drawn .trace {
+  stroke-dashoffset: 0;
+}
+
+.trace-dot {
+  fill: var(--se-color-ink);
+  opacity: 0;
+  transition: opacity var(--se-duration-micro) var(--se-ease-standard) calc(var(--se-duration-standard) + 100ms);
+}
+
+.trace-overlay.is-drawn .trace-dot {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .trace {
+    stroke-dasharray: none;
+    stroke-dashoffset: 0;
+    transition: none;
+  }
+
+  .trace-dot {
+    opacity: 1;
+    transition: none;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — 1440 / 1024 / 768 / 375
+   ============================================================ */
+@media (max-width: 1240px) {
+  .rot-tag {
+    display: none;
+  }
+
+  /* no outer margin to sit in */
+}
+
+@media (max-width: 900px) {
+  .masthead {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    grid-template-areas: "ov" "nm" "py" "ch" "dk" "lk";
+    column-gap: 0;
+    padding: var(--se-space-8) 0 var(--se-space-7);
+  }
+
+  .giant-name {
+    font-size: var(--se-type-8);
+    align-self: start;
+    margin-top: var(--se-space-4);
+  }
+
+  .portrait {
+    margin-top: var(--se-space-5);
+  }
+
+  /* full-width band beneath the name */
+  .role-chip {
+    margin-top: var(--se-space-5);
+  }
+
+  .rot-tag {
+    display: none;
+  }
+
+  .focus-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .giant-name {
+    font-size: var(--se-type-7);
+  }
+
+  .section {
+    padding: var(--se-space-7) 0 var(--se-space-6);
+  }
+
+  .profile-meta {
+    gap: var(--se-space-3) var(--se-space-6);
+  }
+
+  .role-where {
+    margin-left: 0;
+  }
+
+  .project-meta {
+    margin-left: 0;
+  }
+
+  .footer {
+    padding: var(--se-space-6) 0 var(--se-space-7);
+  }
+}
